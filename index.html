@@ -14,16 +14,19 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #111827;
-      --muted: #5b6472;
-      --quiet: #f5f7fb;
+      --ink: #151719;
+      --muted: #68707d;
+      --quiet: #f6f4ef;
       --panel: #ffffff;
-      --line: #d9dee8;
-      --gold: #c79024;
-      --green: #18794e;
-      --blue: #1f5eff;
+      --panel-soft: #fbfaf7;
+      --line: #ddd7ca;
+      --line-strong: #cfc6b8;
+      --gold: #9b6b20;
+      --green: #1f6f54;
+      --blue: #315c88;
       --red: #b42318;
-      --shadow: 0 18px 46px rgba(17, 24, 39, 0.12);
+      --shadow: 0 22px 60px rgba(24, 25, 27, 0.11);
+      --shadow-soft: 0 10px 30px rgba(24, 25, 27, 0.07);
       --radius: 8px;
     }
 
@@ -33,7 +36,7 @@
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
-      background: #f7f8fb;
+      background: var(--panel-soft);
       line-height: 1.5;
       letter-spacing: 0;
     }
@@ -45,8 +48,8 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(14px);
+      background: rgba(251, 250, 247, 0.92);
+      backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--line);
     }
 
@@ -94,7 +97,7 @@
       align-items: center;
       justify-content: center;
       min-height: 42px;
-      padding: 10px 15px;
+      padding: 10px 17px;
       border: 1px solid var(--ink);
       border-radius: var(--radius);
       text-decoration: none;
@@ -102,7 +105,13 @@
       font-size: 14px;
       background: var(--ink);
       color: #fff;
-      box-shadow: 0 8px 18px rgba(17, 24, 39, 0.16);
+      box-shadow: 0 10px 24px rgba(24, 25, 27, 0.18);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(24, 25, 27, 0.2);
     }
 
     .button.secondary {
@@ -120,31 +129,52 @@
 
     .hero {
       position: relative;
-      padding: 54px 0 24px;
+      padding: 72px 0 34px;
       overflow: hidden;
-      background:
-        linear-gradient(rgba(247, 248, 251, 0.82), rgba(247, 248, 251, 0.92)),
-        url("https://github.com/DineroLabs.png?size=460") center 24px / 330px 330px no-repeat;
+      background: #f3f0e8;
       border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 54px;
+      right: max(40px, calc((100vw - 1180px) / 2));
+      width: 360px;
+      height: 360px;
+      background: url("https://github.com/DineroLabs.png?size=460") center / contain no-repeat;
+      opacity: 0.22;
+      filter: saturate(0.82) contrast(0.96);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.76);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 32px;
-      align-items: end;
-      min-height: 470px;
+      grid-template-columns: minmax(0, 0.92fr) minmax(330px, 0.48fr);
+      gap: 56px;
+      align-items: center;
+      min-height: 500px;
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 10px;
+      padding: 7px 11px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.62);
       border-radius: 999px;
-      color: var(--muted);
+      color: #5c5144;
       font-size: 13px;
       font-weight: 680;
       margin-bottom: 18px;
@@ -152,38 +182,51 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(44px, 7vw, 86px);
-      line-height: 0.96;
-      max-width: 720px;
+      font-size: clamp(46px, 7vw, 92px);
+      line-height: 0.94;
+      max-width: 790px;
       letter-spacing: 0;
     }
 
     .lead {
-      margin: 22px 0 0;
-      max-width: 650px;
-      color: #394150;
+      margin: 24px 0 0;
+      max-width: 700px;
+      color: #3f4247;
       font-size: 19px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
 
     .quick {
       display: grid;
-      gap: 12px;
-      align-self: stretch;
-      align-content: end;
+      gap: 0;
+      align-self: center;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(221, 215, 202, 0.92);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
     .quick-card {
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: 0 8px 22px rgba(17, 24, 39, 0.08);
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      padding: 18px;
+      box-shadow: none;
     }
 
+    .quick-card:last-child { border-bottom: 0; }
     .quick-card strong { display: block; font-size: 15px; margin-bottom: 5px; }
     .quick-card span { color: var(--muted); font-size: 14px; }
 
-    section { padding: 58px 0; }
+    section { padding: 66px 0; }
 
     .section-head {
       display: flex;
@@ -210,21 +253,30 @@
     .download-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
 
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 8px 20px rgba(17, 24, 39, 0.05);
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
     }
 
+    .download-card:first-child {
+      grid-column: span 1;
+      border-color: var(--line-strong);
+      box-shadow: var(--shadow);
+      background: #fffdfa;
+    }
+
+    .download-card:first-child .platform { font-size: 26px; }
+
     .explorer-card {
-      background: #111827;
+      background: #171819;
       color: #f8fafc;
-      border-color: #1f2937;
+      border-color: #2a2b2d;
       overflow: hidden;
     }
 
@@ -255,7 +307,7 @@
 
     .ticker-value {
       margin-top: 8px;
-      color: #66e7cf;
+      color: #89dfc7;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: clamp(18px, 3vw, 28px);
       font-weight: 800;
@@ -295,8 +347,8 @@
       width: 8px;
       height: 8px;
       border-radius: 999px;
-      background: #66e7cf;
-      box-shadow: 0 0 0 5px rgba(102, 231, 207, 0.12);
+      background: #89dfc7;
+      box-shadow: 0 0 0 5px rgba(137, 223, 199, 0.12);
     }
 
     .download-card {
@@ -331,14 +383,14 @@
       white-space: nowrap;
     }
 
-    .pill.preview { background: #eef3ff; color: var(--blue); }
-    .pill.operator { background: #fff7e8; color: #8a5a00; }
+    .pill.preview { background: #eef2f5; color: var(--blue); }
+    .pill.operator { background: #f8efd9; color: #775112; }
 
     .filename {
       min-height: 55px;
       padding: 10px;
       background: var(--quiet);
-      border: 1px solid #e8ecf3;
+      border: 1px solid #ebe5d8;
       border-radius: var(--radius);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 13px;
@@ -362,7 +414,7 @@
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      gap: 16px;
     }
 
     .list {
@@ -401,7 +453,7 @@
       margin: 0;
       padding: 16px;
       overflow-x: auto;
-      background: #111827;
+      background: #171819;
       color: #f8fafc;
       border-radius: var(--radius);
       font-size: 13px;
@@ -431,7 +483,7 @@
     }
 
     th {
-      background: #f0f3f8;
+      background: #f2eee7;
       font-size: 12px;
       color: #4b5563;
       text-transform: uppercase;
@@ -441,7 +493,7 @@
     tr:last-child td { border-bottom: 0; }
 
     .status-band {
-      background: #111827;
+      background: #171819;
       color: #fff;
       padding: 28px 0;
     }
@@ -464,6 +516,7 @@
     footer {
       padding: 36px 0;
       border-top: 1px solid var(--line);
+      background: #fffdfa;
       color: var(--muted);
       font-size: 14px;
     }
@@ -492,6 +545,13 @@
 
       .hero { padding-top: 34px; }
       .hero-grid { min-height: auto; }
+      .hero::before {
+        right: -80px;
+        top: 28px;
+        width: 280px;
+        height: 280px;
+        opacity: 0.18;
+      }
       .section-head { display: block; }
       .section-head p { margin-top: 12px; }
       .navlinks a:not(.button) { display: none; }
@@ -502,6 +562,14 @@
       .nav { height: 62px; }
       .brand span { display: none; }
       .download-card { min-height: auto; }
+      .hero::before {
+        width: 220px;
+        height: 220px;
+        right: -112px;
+        top: 58px;
+        opacity: 0.12;
+      }
+      .hero-actions .button { width: 100%; }
       th, td { display: block; width: 100%; }
       th { display: none; }
       td { border-bottom: 0; padding: 10px 13px; }
@@ -534,6 +602,10 @@
           <div class="eyebrow">Official downloads from DineroLabs</div>
           <h1 id="hero-title">Choose the right Dinero download.</h1>
           <p class="lead">Wallets for desktop users, Core packages for node operators, and snapshot assets for fast sync. This page shows only the current recommended software so users do not have to dig through GitHub release history.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://github.com/DineroLabs/dinero-releases/releases/download/v2.2.6-rc5/Dinero-2.2.6-rc5-windows-x86_64-Setup.exe">Download for Windows</a>
+            <a class="button secondary" href="#downloads">View all downloads</a>
+          </div>
         </div>
         <div class="quick" aria-label="Current recommendations">
           <div class="quick-card">
