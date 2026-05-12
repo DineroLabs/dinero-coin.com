@@ -538,7 +538,7 @@
         <div class="quick" aria-label="Current recommendations">
           <div class="quick-card">
             <strong>Windows users</strong>
-            <span>Use v2.2.6-rc1 or newer. Older rc8 desktop builds are superseded.</span>
+            <span>Use the rc5 bundled installer. Older rc8/rc7 desktop builds are superseded.</span>
           </div>
           <div class="quick-card">
             <strong>macOS users</strong>
@@ -565,11 +565,11 @@
               <div class="platform">Windows Wallet</div>
               <span class="pill preview">Preview</span>
             </div>
-            <p class="meta">Best choice for Windows desktop users. Installs to Program Files and preserves wallet data in AppData.</p>
-            <div class="filename">Dinero-Setup-2.2.6-rc1.exe</div>
+            <p class="meta">Best choice for Windows desktop users. Bundles the Qt wallet, daemon stack, Qt runtime, OpenSSL/curl DLLs, and window icon.</p>
+            <div class="filename">Dinero-2.2.6-rc5-windows-x86_64-Setup.exe</div>
             <div class="actions">
-              <a class="button" href="https://github.com/DineroLabs/dinero-releases/releases/download/v2.2.6-rc1/Dinero-Setup-2.2.6-rc1.exe">Download installer</a>
-              <a class="button secondary" href="https://github.com/DineroLabs/dinero-releases/releases/tag/v2.2.6-rc1">Read rc1 notes</a>
+              <a class="button" href="https://github.com/DineroLabs/dinero-releases/releases/download/v2.2.6-rc5/Dinero-2.2.6-rc5-windows-x86_64-Setup.exe">Download installer</a>
+              <a class="button secondary" href="https://github.com/DineroLabs/dinero-releases/releases/tag/v2.2.6-rc5">Read rc5 notes</a>
             </div>
           </article>
 
@@ -603,9 +603,9 @@
         <div class="two-col" style="margin-top: 14px;">
           <article class="card">
             <h3>Windows server operators</h3>
-            <p class="meta">Daemon and CLI only, no GUI. Includes service install/uninstall scripts for operators who want manual control.</p>
-            <div class="filename">dinero-core-2.2.6-rc1-windows-win64-preview.zip</div>
-            <a class="button secondary" href="https://github.com/DineroLabs/dinero-releases/releases/download/v2.2.6-rc1/dinero-core-2.2.6-rc1-windows-win64-preview.zip">Download Core zip</a>
+            <p class="meta">Raw daemon stack for power users. The full installer above is recommended because it bundles the runtime DLLs.</p>
+            <div class="filename">dinero-v2.2.6-rc5-windows-x86_64-msvc.zip</div>
+            <a class="button secondary" href="https://github.com/DineroLabs/dinero-releases/releases/download/v2.2.6-rc5/dinero-v2.2.6-rc5-windows-x86_64-msvc.zip">Download raw zip</a>
           </article>
 
           <article class="card">
@@ -653,7 +653,7 @@
 
     <section class="status-band" aria-label="Release status">
       <div class="wrap status-grid">
-        <div><strong>Windows</strong><span>v2.2.6-rc1 preview installer</span></div>
+        <div><strong>Windows</strong><span>rc5 bundled installer</span></div>
         <div><strong>macOS</strong><span>v2.2.6-rc1 notarized RC</span></div>
         <div><strong>Linux</strong><span>Ubuntu 24.04+ Core .deb</span></div>
         <div><strong>Snapshot</strong><span>h=13000 fast-sync assets</span></div>
@@ -670,9 +670,9 @@
         <div class="verify-grid">
           <div class="card">
             <h3>Windows checksum</h3>
-            <pre><code>certutil -hashfile Dinero-Setup-2.2.6-rc1.exe SHA256
+            <pre><code>certutil -hashfile Dinero-2.2.6-rc5-windows-x86_64-Setup.exe SHA256
 # Expected:
-f7a7afd2563f0f58119ea86d1ae4b7650ab88eb0b12ed02242e7731a74f03950</code></pre>
+a4d7a51933eede8372be294061d16cc7f6d59793fe41d8401bb27967916b1aaa</code></pre>
           </div>
 
           <div class="card">
