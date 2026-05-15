@@ -603,22 +603,22 @@
           <h1 id="hero-title">Choose the right Dinero download.</h1>
           <p class="lead">Wallets for desktop users, Core packages for node operators, and snapshot assets for fast sync. This page shows only the current recommended software so users do not have to dig through GitHub release history.</p>
           <div class="hero-actions">
-            <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc2/Dinero-8.0.0-rc2-windows-x86_64-Setup.exe">Download for Windows</a>
+            <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/Dinero-8.0.0-rc3-windows-x86_64-Setup.exe">Download for Windows</a>
             <a class="button secondary" href="#downloads">View all downloads</a>
           </div>
         </div>
         <div class="quick" aria-label="Current recommendations">
           <div class="quick-card">
             <strong>Windows users</strong>
-            <span>Use the v8.0.0-rc2 one-click installer. Older v2.2.6 builds are superseded.</span>
+            <span>Use the v8.0.0-rc3 one-click installer. A server-only build is in the operator section below.</span>
           </div>
           <div class="quick-card">
             <strong>macOS users</strong>
             <span>Use the signed and Apple-notarized v8.0.0-rc1 wallet (.dmg or .app zip).</span>
           </div>
           <div class="quick-card">
-            <strong>Linux operators</strong>
-            <span>Use the v8.0.0-rc2 x86_64 daemon tarball. Static OpenSSL, no system deps.</span>
+            <strong>Linux users</strong>
+            <span>Use the v8.0.0-rc3 AppImage for the GUI wallet, or the dinero-core .deb / tarball for a headless node.</span>
           </div>
         </div>
       </div>
@@ -638,10 +638,10 @@
               <span class="pill preview">v8 Preview</span>
             </div>
             <p class="meta">Best choice for Windows desktop users. Bundles the Qt6 wallet, daemon stack, Qt runtime, OpenSSL/curl DLLs, and window icon. Installs to Program Files and preserves wallet data in <code>%APPDATA%\Dinero</code>.</p>
-            <div class="filename">Dinero-8.0.0-rc2-windows-x86_64-Setup.exe</div>
+            <div class="filename">Dinero-8.0.0-rc3-windows-x86_64-Setup.exe</div>
             <div class="actions">
-              <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc2/Dinero-8.0.0-rc2-windows-x86_64-Setup.exe">Download installer</a>
-              <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/tag/v8.0.0-rc2">Read rc2 notes</a>
+              <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/Dinero-8.0.0-rc3-windows-x86_64-Setup.exe">Download installer</a>
+              <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/tag/v8.0.0-rc3">Read rc3 notes</a>
             </div>
           </article>
 
@@ -650,7 +650,7 @@
               <div class="platform">macOS Wallet</div>
               <span class="pill preview">v8 RC</span>
             </div>
-            <p class="meta">Signed and Apple-notarized Apple Silicon desktop wallet. Drag to Applications and launch — no SmartScreen-style warnings.</p>
+            <p class="meta">Signed and Apple-notarized Apple Silicon desktop wallet. Drag to Applications and launch — no SmartScreen-style warnings. (Still at rc1; an rc3 mac rebuild is on the rc4 follow-up list.)</p>
             <div class="filename">Dinero-v8.0.0-rc1-macOS-arm64-signed.dmg</div>
             <div class="actions">
               <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc1/Dinero-v8.0.0-rc1-macOS-arm64-signed.dmg">Download .dmg</a>
@@ -660,33 +660,82 @@
 
           <article class="card download-card">
             <div class="tag-row">
-              <div class="platform">Linux Daemon</div>
-              <span class="pill operator">v8 Operator</span>
+              <div class="platform">Linux Wallet</div>
+              <span class="pill preview">v8 Preview</span>
             </div>
-            <p class="meta">x86_64 daemon-only tarball. Static-linked against vendored OpenSSL 3.3.2 — no system OpenSSL or libcurl required. Six binaries (<code>dinerod</code>, <code>dinero-cli</code>, miners, wallet-cli) under <code>bin/</code>.</p>
-            <div class="filename">dinero-v8.0.0-rc2-linux-x86_64.tar.gz</div>
+            <p class="meta">Self-contained AppImage with the Qt6 wallet plus the bundled daemon. <code>chmod +x</code> and run; needs <code>libfuse2</code> on most distros. Works on any glibc 2.35+ system (Ubuntu 22.04+).</p>
+            <div class="filename">dinero-v8.0.0-rc3-linux-x86_64.AppImage</div>
             <div class="actions">
-              <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc2/dinero-v8.0.0-rc2-linux-x86_64.tar.gz">Download Linux tarball</a>
-              <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/tag/v8.0.0-rc2">Verify release</a>
+              <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-v8.0.0-rc3-linux-x86_64.AppImage">Download AppImage</a>
+              <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/tag/v8.0.0-rc3">Read rc3 notes</a>
             </div>
+          </article>
+        </div>
+
+        <div class="section-head" style="margin-top: 28px;">
+          <h2>Operators &amp; servers</h2>
+          <p>Headless node packaging. dinerod runs as a service / daemon — no Qt GUI, no <code>dinero-solo-miner</code>.</p>
+        </div>
+
+        <div class="two-col" style="margin-top: 14px;">
+          <article class="card">
+            <h3>Windows Server installer</h3>
+            <p class="meta">NSIS install to <code>C:\Program Files\Dinero-Server\</code>. Registers <code>dinerod</code> as a Windows Service (auto-start, datadir under <code>C:\ProgramData\Dinero</code>, failure-restart policy). No Start Menu shortcuts. Wallets + chain data survive uninstall.</p>
+            <div class="filename">Dinero-Server-8.0.0-rc3-windows-x86_64-Setup.exe</div>
+            <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/Dinero-Server-8.0.0-rc3-windows-x86_64-Setup.exe">Download server installer</a>
+          </article>
+
+          <article class="card">
+            <h3>Windows raw daemon ZIP</h3>
+            <p class="meta">Raw daemon stack for power users — six binaries + LICENSE + README + SHA256SUMS. Does NOT bundle the runtime DLLs (<code>libcurl.dll</code> + OpenSSL); use the user installer or server installer above instead unless you know what you're doing.</p>
+            <div class="filename">dinero-v8.0.0-rc3-windows-x86_64-msvc.zip</div>
+            <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-v8.0.0-rc3-windows-x86_64-msvc.zip">Download raw zip</a>
           </article>
         </div>
 
         <div class="two-col" style="margin-top: 14px;">
           <article class="card">
-            <h3>Windows server operators</h3>
-            <p class="meta">Raw daemon stack for power users. The full installer above is recommended because it bundles the runtime DLLs (<code>libcurl.dll</code>, OpenSSL); the ZIP does not.</p>
-            <div class="filename">dinero-v8.0.0-rc2-windows-x86_64-msvc.zip</div>
-            <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc2/dinero-v8.0.0-rc2-windows-x86_64-msvc.zip">Download raw zip</a>
+            <h3>Linux <code>dinero-core</code> .deb</h3>
+            <p class="meta">Ubuntu 22.04+ packaged-service node. Installs <code>dinerod</code> + <code>dinero-cli</code> via <code>apt</code>, ships a systemd unit (NOT auto-enabled), dedicated <code>dinero</code> system user, FHS datadir <code>/var/lib/dinero</code>. No Qt, no GPU mining, no gRPC, no hardware-wallet HID.</p>
+            <div class="filename">dinero-core_8.0.0.rc3-1_amd64.deb</div>
+            <a class="button" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-core_8.0.0.rc3-1_amd64.deb">Download .deb</a>
           </article>
 
           <article class="card">
-            <h3>Fast-sync snapshot</h3>
-            <p class="meta">h=13000 snapshot and manifest for Core operators. Snapshot data is not an app.</p>
-            <div class="filename">utxo-snapshot-13000.dat + manifest</div>
-            <a class="button secondary" href="https://github.com/DineroLabs/dinero-releases/releases/tag/v2.2.5-rc3">Open snapshot release</a>
+            <h3>Linux operator tarball</h3>
+            <p class="meta">x86_64 daemon-only tarball. Static-linked against vendored OpenSSL 3.3.2 — no system OpenSSL or libcurl required. Manual install (no systemd unit). For non-Ubuntu distros or operators who don't want apt-managed install.</p>
+            <div class="filename">dinero-v8.0.0-rc3-linux-x86_64.tar.gz</div>
+            <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-v8.0.0-rc3-linux-x86_64.tar.gz">Download tarball</a>
           </article>
         </div>
+
+        <div class="section-head" style="margin-top: 28px;">
+          <h2>Linux GUI alternatives</h2>
+          <p>If the AppImage doesn't work on your distro (no <code>libfuse2</code>, locked-down glibc, etc.), use one of these instead.</p>
+        </div>
+
+        <div class="two-col" style="margin-top: 14px;">
+          <article class="card">
+            <h3>Linux Qt tarball</h3>
+            <p class="meta">Same payload as the AppImage but as a plain tarball with bundled Qt6 libs + AppRun wrapper. Extract anywhere, run <code>./AppRun</code>.</p>
+            <div class="filename">dinero-v8.0.0-rc3-linux-x86_64-qt.tar.gz</div>
+            <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-v8.0.0-rc3-linux-x86_64-qt.tar.gz">Download .qt.tar.gz</a>
+          </article>
+
+          <article class="card">
+            <h3>Linux GUI .deb</h3>
+            <p class="meta">apt-managed alternative to the AppImage. Depends on system Qt6 (<code>libqt6widgets6</code> etc.) so the .deb stays small (~14 MB). Independent of dinero-core — installing the GUI does NOT enable the systemd packaged-service node.</p>
+            <div class="filename">dinero-qt-desktop_8.0.0.rc3-1_amd64.deb</div>
+            <a class="button secondary" href="https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-qt-desktop_8.0.0.rc3-1_amd64.deb">Download .deb</a>
+          </article>
+        </div>
+
+        <article class="card" style="margin-top: 14px;">
+          <h3>Fast-sync snapshot</h3>
+          <p class="meta">h=13000 snapshot and manifest for Core operators. Snapshot data is not an app, and is version-line agnostic.</p>
+          <div class="filename">utxo-snapshot-13000.dat + manifest</div>
+          <a class="button secondary" href="https://github.com/DineroLabs/dinero-releases/releases/tag/v2.2.5-rc3">Open snapshot release</a>
+        </article>
 
         <article class="card explorer-card" style="margin-top: 14px;" aria-labelledby="explorer-title">
           <div class="tag-row">
@@ -725,9 +774,9 @@
 
     <section class="status-band" aria-label="Release status">
       <div class="wrap status-grid">
-        <div><strong>Windows</strong><span>v8.0.0-rc2 bundled installer</span></div>
+        <div><strong>Windows</strong><span>v8.0.0-rc3 bundled installer + Server installer</span></div>
         <div><strong>macOS</strong><span>v8.0.0-rc1 notarized RC</span></div>
-        <div><strong>Linux</strong><span>v8.0.0-rc2 x86_64 daemon tarball</span></div>
+        <div><strong>Linux</strong><span>v8.0.0-rc3 AppImage / dinero-core .deb</span></div>
         <div><strong>Snapshot</strong><span>h=13000 fast-sync assets</span></div>
       </div>
     </section>
@@ -741,10 +790,66 @@
 
         <div class="verify-grid">
           <div class="card">
-            <h3>Windows installer checksum</h3>
-            <pre><code>certutil -hashfile Dinero-8.0.0-rc2-windows-x86_64-Setup.exe SHA256
+            <h3>Windows user installer</h3>
+            <pre><code>certutil -hashfile Dinero-8.0.0-rc3-windows-x86_64-Setup.exe SHA256
 # Expected:
-6c89bd6ef16aae4b7d7afcbe8d2336aaf8802aae4ee5c03b61d599fe146533ca</code></pre>
+fee80621f2a30fed86a773a727ad7bb0895547e6cb1e2450df8ff892afeb9b61</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Windows Server installer</h3>
+            <pre><code>certutil -hashfile Dinero-Server-8.0.0-rc3-windows-x86_64-Setup.exe SHA256
+# Expected:
+269f821afe83da7b0e215fbe4eea2d17ebfca8ca347ca82a713db76d5805b9cc</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Windows daemon ZIP</h3>
+            <pre><code>certutil -hashfile dinero-v8.0.0-rc3-windows-x86_64-msvc.zip SHA256
+# Expected:
+7cd1af327dc39a06e535efadf7887bdc075aca469027fa2ab25d0ecfd72668a7</code></pre>
+          </div>
+        </div>
+
+        <div class="verify-grid" style="margin-top: 14px;">
+          <div class="card">
+            <h3>Linux AppImage</h3>
+            <pre><code>wget https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-v8.0.0-rc3-linux-x86_64.AppImage
+sha256sum dinero-v8.0.0-rc3-linux-x86_64.AppImage
+# Expected:
+3445174b01fd16da7c0c483859e2405125a84ea4a8bd7a053bf006fff16de574</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Linux dinero-core .deb</h3>
+            <pre><code>wget https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-core_8.0.0.rc3-1_amd64.deb
+sha256sum dinero-core_8.0.0.rc3-1_amd64.deb
+# Expected:
+9702ab23ebdcb67ef497e1b03ae8531d746721f0596a88f2534c1ad52003417a</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Linux operator tarball</h3>
+            <pre><code>wget https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc3/dinero-v8.0.0-rc3-linux-x86_64.tar.gz
+sha256sum dinero-v8.0.0-rc3-linux-x86_64.tar.gz
+# Expected:
+429d46bfaac1bf4530851b344dcdb54571cdd29328a0c8db6202e35c8a57b476</code></pre>
+          </div>
+        </div>
+
+        <div class="verify-grid" style="margin-top: 14px;">
+          <div class="card">
+            <h3>Linux Qt tarball</h3>
+            <pre><code>sha256sum dinero-v8.0.0-rc3-linux-x86_64-qt.tar.gz
+# Expected:
+dc796f2b9cc294690e9077a339dccc3e89687d31de3019729e6d1e711a526a3f</code></pre>
+          </div>
+
+          <div class="card">
+            <h3>Linux GUI .deb</h3>
+            <pre><code>sha256sum dinero-qt-desktop_8.0.0.rc3-1_amd64.deb
+# Expected:
+580e0274d8b272def1d8baa71be2bedf8ecc1e903c128190f0d889267b701fb1</code></pre>
           </div>
 
           <div class="card">
@@ -753,23 +858,6 @@
 # Expected:
 accepted
 source=Notarized Developer ID</code></pre>
-          </div>
-        </div>
-
-        <div class="verify-grid" style="margin-top: 14px;">
-          <div class="card">
-            <h3>Windows daemon ZIP checksum</h3>
-            <pre><code>certutil -hashfile dinero-v8.0.0-rc2-windows-x86_64-msvc.zip SHA256
-# Expected:
-39da7bf8c63205ed0cc52abba35570b6a64b9c44cf55afa8680aea192a11e895</code></pre>
-          </div>
-
-          <div class="card">
-            <h3>Linux tarball checksum</h3>
-            <pre><code>wget https://github.com/DineroLabs/dinero-v8/releases/download/v8.0.0-rc2/dinero-v8.0.0-rc2-linux-x86_64.tar.gz
-sha256sum dinero-v8.0.0-rc2-linux-x86_64.tar.gz
-# Expected:
-e6837bb80e998cb43c30d5f7d9fe1d8d30d7d952d22b38d0a08fcfec0cdc8342</code></pre>
           </div>
         </div>
       </div>
@@ -802,28 +890,62 @@ e6837bb80e998cb43c30d5f7d9fe1d8d30d7d952d22b38d0a08fcfec0cdc8342</code></pre>
               <td>macOS application-data convention</td>
             </tr>
             <tr>
-              <td>Linux v8 tarball / developer</td>
+              <td>Windows Server installer</td>
+              <td><code>C:\ProgramData\Dinero</code></td>
+              <td>Windows Service convention; survives uninstall</td>
+            </tr>
+            <tr>
+              <td>Linux <code>dinero-core</code> .deb</td>
+              <td><code>/var/lib/dinero</code></td>
+              <td>FHS/systemd daemon under the dinero service user</td>
+            </tr>
+            <tr>
+              <td>Linux operator tarball / developer</td>
               <td><code>~/.dinero</code></td>
               <td>Standard Linux CLI/daemon dot-directory convention</td>
+            </tr>
+            <tr>
+              <td>Linux GUI (AppImage / Qt tarball / dinero-qt-desktop .deb)</td>
+              <td><code>~/.dinero</code></td>
+              <td>GUI auto-starts the bundled daemon in the user's home</td>
             </tr>
           </tbody>
         </table>
 
         <div class="two-col" style="margin-top: 14px;">
           <article class="card">
-            <h3>Linux v8 daemon quick start</h3>
-            <pre><code>tar -xzf dinero-v8.0.0-rc2-linux-x86_64.tar.gz
-cd dinero-v8.0.0-rc2-linux-x86_64
+            <h3>Linux <code>dinero-core</code> .deb quick start</h3>
+            <pre><code>sudo dpkg -i dinero-core_8.0.0.rc3-1_amd64.deb
+sudo systemctl enable --now dinero
+sudo -u dinero dinero-cli -datadir=/var/lib/dinero getblockchaininfo</code></pre>
+          </article>
+          <article class="card">
+            <h3>Linux operator tarball quick start</h3>
+            <pre><code>tar -xzf dinero-v8.0.0-rc3-linux-x86_64.tar.gz
+cd dinero-v8.0.0-rc3-linux-x86_64
 sha256sum -c SHA256SUMS.txt
 ./bin/dinerod                          # mainnet, ~/.dinero
 ./bin/dinero-cli getblockchaininfo</code></pre>
           </article>
+        </div>
+
+        <div class="two-col" style="margin-top: 14px;">
+          <article class="card">
+            <h3>Linux AppImage quick start</h3>
+            <pre><code>chmod +x dinero-v8.0.0-rc3-linux-x86_64.AppImage
+./dinero-v8.0.0-rc3-linux-x86_64.AppImage    # GUI auto-starts the bundled daemon
+
+# If libfuse2 is missing: sudo apt install libfuse2
+# Or extract + run without FUSE:
+./dinero-v8.0.0-rc3-linux-x86_64.AppImage --appimage-extract
+squashfs-root/AppRun</code></pre>
+          </article>
           <article class="card">
             <h3>What is not stable yet</h3>
             <ul class="list">
-              <li>Windows v8 installer is not yet Authenticode-signed — SmartScreen may warn. Verify the SHA256 above and click "More info" → "Run anyway".</li>
-              <li>macOS, Windows, and Linux v8 artifacts are all release candidates, not final stable promotion.</li>
-              <li>The Linux v8 tarball is daemon-only — no Qt GUI and no GPU miner for v8 Linux yet.</li>
+              <li>Windows v8 installers (user + server) are not yet Authenticode-signed — SmartScreen may warn. Verify the SHA256 above and click "More info" → "Run anyway".</li>
+              <li>macOS v8 is at rc1 — an rc3 mac rebuild is on the rc4 follow-up list. The rc1 .dmg / .app zip remain Apple-notarized and safe to run.</li>
+              <li><code>dinero-gpu-miner</code> ships on Windows but its OpenCL runtime path is not yet validated on MSVC; treat as experimental. Not shipped on Linux for rc3 (CUDA toolkit unavailable in the build environment).</li>
               <li>Stable promotion waits for the next final-release ceremony.</li>
             </ul>
           </article>
